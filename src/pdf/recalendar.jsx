@@ -10,6 +10,8 @@ import MonthOverviewPage from '~/pdf/pages/month-overview';
 import WeekOverviewPage from '~/pdf/pages/week-overview';
 import WeekRetrospectivePage from '~/pdf/pages/week-retrospective';
 import YearOverviewPage from '~/pdf/pages/year-overview';
+import TitlePage from '~/pdf/pages/title-page';
+import EmotionsPage from '~/pdf/pages/emotions';
 
 class RecalendarPdf extends React.Component {
 	styles = StyleSheet.create( {
@@ -47,6 +49,7 @@ class RecalendarPdf extends React.Component {
 				{config.isWeekOverviewEnabled && (
 					<WeekOverviewPage date={ startOfWeek } config={ config } />
 				)}
+				{<EmotionsPage config={ config } />}
 				{weekPages}
 				{config.isWeekRetrospectiveEnabled && (
 					<WeekRetrospectivePage date={ startOfWeek } config={ config } />
@@ -64,6 +67,14 @@ class RecalendarPdf extends React.Component {
 			day: 1,
 		} );
 		const endDate = currentDate.add( monthCount, 'months' );
+
+		pageList.push(
+			<TitlePage
+			key={ 'title-' + year }
+			startDate={ currentDate }
+			config={ this.props.config }			
+			 	/>,
+		);
 
 		pageList.push(
 			<YearOverviewPage

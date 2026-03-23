@@ -15,10 +15,10 @@
 			}
 		},
 		"week": {
-			"title": "Week"
+			"title": "Week Plan"
 		},
 		"retrospective": {
-			"title": "Retrospective for week"
+			"title": "Week Review"
 		},
 		"last": {
 			"title": "Generated using <recalendar>https://recalendar.me/</recalendar>",
