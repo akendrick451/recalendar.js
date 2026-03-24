@@ -44,27 +44,29 @@ export function gratitudeStyle() {
 export function bibleStyle() {
 	return {
 		// === NEW: Add these styles ===
-			  bibleSection: {
-				marginTop: 15,          // space after header
-				marginBottom: 20,
-				padding: 10,
-				borderWidth: 1,
-				borderColor: '#cccccc',
-				borderStyle: 'dashed',  // subtle dashed box for visual cue
-				borderRadius: 6,
-			  },
-			  questionText: {
-				fontSize: 12,
-				fontFamily: 'Helvetica-Bold', // or whatever bold font is registered
-				marginBottom: 8,
-				color: '#555555',
-			  },
-			  writingLine: {
-				height: 1,
-				backgroundColor: '#999999',
-				marginVertical: 10,     // space between lines
-				marginHorizontal: 5,
-			  },
+			 bibleSection: {
+    marginTop: 30,
+    paddingTop: 15,
+    borderTop: '1 solid #cccccc',
+  },
+  bibleTitle: {
+    fontSize: 11,
+    color: '#666666',
+    marginBottom: 6,
+    fontWeight: 'bold',
+  },
+  bibleText: {
+    fontSize: 12,
+    lineHeight: 1.5,
+    fontStyle: 'italic',
+    color: '#333333',
+  },
+  bibleRef: {
+    fontSize: 10,
+    color: '#888888',
+    marginTop: 6,
+    textAlign: 'right',
+  },
 	
 
 	};
