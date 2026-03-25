@@ -18,7 +18,9 @@ import {
 } from '~/pdf/lib/links';
 import { content, pageStyle, bibleStyle } from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
-import { gratitudeStyle } from '../styles';
+import { gratitudeStyle, personalStyle } from '../styles';
+
+
 // Temporary hack to silence React Refresh in PDF worker
 if (typeof window === 'undefined' || !window.$RefreshReg$) {
   globalThis.$RefreshReg$ = () => {};
@@ -37,8 +39,9 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
   const styles = StyleSheet.create(
 		Object.assign( {}, 
 		{ content, page: pageStyle( config ) }, 
-		{ content, page: gratitudeStyle(config )} ,
-		{ content, page: bibleStyle(config )}),		
+		{ gratitudeStyle: gratitudeStyle(config )} ,
+		{ bibleStyle: bibleStyle(config )},		
+    { personalStyle: personalStyle(config )}),
 	);
 
   return (
@@ -59,18 +62,21 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
           />
 
           {/* ====================== RANDOM BIBLE VERSE ====================== */}
-          <View style={styles.bibleStyle}>            {verseData ? (
-              <>
-                <Text style={styles.bibleText}>“{verseData.text}”</Text>
-                <Text style={styles.bibleRef}>— {verseData.reference}</Text>
-              </>
-            ) : (
-              <Text style={styles.bibleText}>Loading verse...</Text>
-            )}
-          </View>
+          
+            <View style={styles.bibleStyle}>           
+                {verseData ? (              
+                <>
+                  <Text style={styles.bibleText}>{verseData.text}</Text>
+                  <Text style={styles.bibleRef}>— {verseData.reference}</Text>
+                </>
+              ) : (
+                <Text style={styles.bibleText}>Loading verse...</Text>
+              )}                    
+            </View>
+     
 
           {/* Your gratitude section */}
-          <View style={styles.gratitudeSection}>
+          <View style={styles.gratitudeStyle}>
             <Text style={styles.questionText}>What I'm grateful for:</Text>
             <Text style={{ fontSize: 11, marginTop: 10, marginLeft: 10 }}>
               generally? ____________________________________________
@@ -84,10 +90,10 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
           </View>
 
           {/* ====================== RANDOM quote  ====================== */}
-          <View style={styles.bibleSection}>
+          <View style={styles.bibleStyle}>
             {quoteData ? (
               <>
-                <Text style={styles.bibleText}>“{quoteData.text}”</Text>
+                <Text style={styles.bibleText}>{quoteData.text}</Text>
               </>
             ) : (
               <Text style={styles.bibleText}>Loading quote...</Text>
@@ -95,10 +101,10 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
           </View>
 
           {/* ====================== personal quote  ====================== */}
-          <View style={styles.bibleSection}>
+         <View style={styles.personalStyle}>
             {personalQuoteData ? (
               <>
-                <Text style={styles.bibleText}>“{personalQuoteData.text}”</Text>
+                <Text style={styles.bibleText}>{personalQuoteData.text}</Text>
               </>
             ) : (
               <Text style={styles.bibleText}>Loading personal quote...</Text>

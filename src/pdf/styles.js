@@ -1,3 +1,5 @@
+import { TextAlignment } from "pdf-lib";
+
 export function pageStyle( { alwaysOnSidebar, isLeftHanded } ) {
 	return {
 		flex: 1,
@@ -24,35 +26,36 @@ export function gratitudeStyle() {
 				borderStyle: 'dashed',  // subtle dashed box for visual cue
 				borderRadius: 6,
 			  },
-			  questionText: {
-				fontSize: 12,
-				fontFamily: 'Helvetica-Bold', // or whatever bold font is registered
-				marginBottom: 8,
-				color: '#555555',
-			  },
-			  writingLine: {
-				height: 1,
-				backgroundColor: '#999999',
-				marginVertical: 10,     // space between lines
-				marginHorizontal: 5,
-			  },
-	
-
 	};
 }
 
 export function bibleStyle() {
 	return {
-
-	border:'1px solid #cccccc',
-    marginTop: 30,
-    paddingTop: 15,
-	
-
-	
-
+		borderWidth: '1px',
+  		borderStyle: 'solid',
+  		borderColor: 'black',
+		marginTop: 5,		
+		marginLeft: 5,
+		marginRight:5,
+		padding: 10,
+		fontSize:10,
 	};
 }
+
+export function personalStyle() {
+	return {
+		borderWidth: '1px',
+  		borderStyle: 'solid',
+  		borderColor: 'black',
+		marginTop: 5,		
+		marginLeft: 5,
+		marginRight:5,
+		padding: 10,
+		fontSize:10,
+		alignItems: 'center',
+	};
+}
+
 
 export const content = {
 	flex: 1,
