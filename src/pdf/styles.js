@@ -43,30 +43,12 @@ export function gratitudeStyle() {
 
 export function bibleStyle() {
 	return {
-		// === NEW: Add these styles ===
-			 bibleSection: {
+
+	border:'1px solid #cccccc',
     marginTop: 30,
     paddingTop: 15,
-    borderTop: '1 solid #cccccc',
-  },
-  bibleTitle: {
-    fontSize: 11,
-    color: '#666666',
-    marginBottom: 6,
-    fontWeight: 'bold',
-  },
-  bibleText: {
-    fontSize: 12,
-    lineHeight: 1.5,
-    fontStyle: 'italic',
-    color: '#333333',
-  },
-  bibleRef: {
-    fontSize: 10,
-    color: '#888888',
-    marginTop: 6,
-    textAlign: 'right',
-  },
+	
+
 	
 
 	};

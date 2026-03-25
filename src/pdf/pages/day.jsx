@@ -16,17 +16,16 @@ import {
   previousDayPageLink,
   monthOverviewLink,
 } from '~/pdf/lib/links';
-import { content, pageStyle } from '~/pdf/styles';
+import { content, pageStyle, bibleStyle } from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
 import { gratitudeStyle } from '../styles';
-import { bibleStyle } from '~/pdf/styles';
 // Temporary hack to silence React Refresh in PDF worker
 if (typeof window === 'undefined' || !window.$RefreshReg$) {
   globalThis.$RefreshReg$ = () => {};
   globalThis.$RefreshSig$ = () => (type) => type;
 }
 
-const DayPage = ({ date, config, verseData }) => {
+const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
 
   const { items, isEnabled } = config.dayItineraries[date.weekday()];
   if (!isEnabled) return null;
@@ -60,9 +59,7 @@ const DayPage = ({ date, config, verseData }) => {
           />
 
           {/* ====================== RANDOM BIBLE VERSE ====================== */}
-          <View style={styles.bibleSection}>
-            <Text style={styles.bibleTitle}>Daily Bible Verse</Text>
-            {verseData ? (
+          <View style={styles.bibleStyle}>            {verseData ? (
               <>
                 <Text style={styles.bibleText}>“{verseData.text}”</Text>
                 <Text style={styles.bibleRef}>— {verseData.reference}</Text>
@@ -85,7 +82,31 @@ const DayPage = ({ date, config, verseData }) => {
               yesterday? ____________________________________________
             </Text>
           </View>
+
+          {/* ====================== RANDOM quote  ====================== */}
+          <View style={styles.bibleSection}>
+            {quoteData ? (
+              <>
+                <Text style={styles.bibleText}>“{quoteData.text}”</Text>
+              </>
+            ) : (
+              <Text style={styles.bibleText}>Loading quote...</Text>
+            )}
+          </View>
+
+          {/* ====================== personal quote  ====================== */}
+          <View style={styles.bibleSection}>
+            {personalQuoteData ? (
+              <>
+                <Text style={styles.bibleText}>“{personalQuoteData.text}”</Text>
+              </>
+            ) : (
+              <Text style={styles.bibleText}>Loading personal quote...</Text>
+            )}
+          </View>
+
         </View>
+
       </Page>
 
       {/* Extra itinerary pages if any */}
@@ -124,6 +145,12 @@ DayPage.propTypes = {
   verseData: PropTypes.shape({
     text: PropTypes.string.isRequired,
     reference: PropTypes.string.isRequired,
+  }),
+  quoteData: PropTypes.shape({
+    text: PropTypes.string.isRequired,
+  }),
+  personalQuoteData: PropTypes.shape({
+    text: PropTypes.string.isRequired,
   }),
 };
 

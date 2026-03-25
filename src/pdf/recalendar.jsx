@@ -28,6 +28,24 @@ const bibleVerses = [
   // Add as many as you like — more variety = better
 ];
 
+
+// Nice selection of literature and insirational quotes
+const variousQuotes = [
+  { text: "It is not the critic who counts; not the man who points out how the strong man stumbles, or where the doer of deeds could have done them better. The credit belongs to the man who is actually in the arena... Theodore Roosevelt" },
+  { text: "q2" },
+ { text: "q3" },
+ 
+];
+
+// Personal quotes, affirmations and information
+const personalQuotes = [
+  { text: "You got this" },
+  { text: "something is very good" },
+  { text: "May you find what you are looking for" },
+ 
+];
+
+
 const RecalendarPdf = ({ config, isPreview }) => {
   const styles = StyleSheet.create({
     document: {
@@ -41,6 +59,19 @@ const RecalendarPdf = ({ config, isPreview }) => {
     const index = dayOfYear % bibleVerses.length; // repeatable
     return bibleVerses[index];
   };
+
+    const getQuoteForDate = (date) => {
+    const dayOfYear = date.dayOfYear();           // 1 to 366
+    const index = dayOfYear % variousQuotes.length; // repeatable
+    return variousQuotes[index];
+  };
+
+  const getPersonalQuote = (date) => {
+    const dayOfYear = date.dayOfYear();           // 1 to 366
+    const index = dayOfYear % personalQuotes.length; // repeatable
+    return personalQuotes[index];
+  };
+
 
   const renderWeek = (startOfWeek) => {
     const weekPages = [];
@@ -59,6 +90,8 @@ const RecalendarPdf = ({ config, isPreview }) => {
       }
 
       const verseData = getVerseForDate(currentDate);
+      const quoteData = getQuoteForDate(currentDate);
+      const personalQuoteData = getPersonalQuote(currentDate);
 
       weekPages.push(
         <DayPage
@@ -66,6 +99,8 @@ const RecalendarPdf = ({ config, isPreview }) => {
           date={currentDate}
           config={config}
           verseData={verseData}
+          quoteData={quoteData}
+          personalQuoteData={personalQuoteData}
         />
       );
 
