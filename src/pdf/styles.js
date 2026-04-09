@@ -88,6 +88,7 @@ export function bibleStyle() {
   };
 }
 
+
 export const content = {
   flex: 1,
   flexGrow: 1,
