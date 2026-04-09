@@ -144,7 +144,7 @@ Header.defaultProps = {
 Header.propTypes = {
 	id: PropTypes.string,
 	children: PropTypes.node,
-	calendar: PropTypes.node.isRequired,
+	calendar: PropTypes.node,
 	isLeftHanded: PropTypes.bool.isRequired,
 	number: PropTypes.string.isRequired,
 	specialItems: PropTypes.array,

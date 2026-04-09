@@ -16,9 +16,9 @@ import {
   previousDayPageLink,
   monthOverviewLink,
 } from '~/pdf/lib/links';
-import { content, pageStyle, bibleStyle } from '~/pdf/styles';
+import { content, pageStyle, bibleStyle, dayStyle , writingInputLines, lineBreak, dayPage2} from '~/pdf/styles';
 import { splitItemsByPages } from '~/pdf/utils';
-import { gratitudeStyle } from '../styles';
+import { gratitudeStyle, quoteStyle } from '~/pdf/styles';
 // Temporary hack to silence React Refresh in PDF worker
 if (typeof window === 'undefined' || !window.$RefreshReg$) {
   globalThis.$RefreshReg$ = () => {};
@@ -34,18 +34,25 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
   const specialDateKey = date.format(SPECIAL_DATES_DATE_FORMAT);
   const specialItems = config.specialDates.filter(findByDate(specialDateKey));
 
-  const styles = StyleSheet.create(
-		Object.assign( {}, 
-		{ content, page: pageStyle( config ) }, 
-		{ content, page: gratitudeStyle(config )} ,
-		{ content, page: bibleStyle(config )}),		
-	);
+  const breakStyle = lineBreak(20);   // 20 = quite a big gap
+
+
+const styles = StyleSheet.create({
+  ...pageStyle(config),
+  ...gratitudeStyle(config),
+  ...bibleStyle(config),
+  ...quoteStyle(config),
+  ...dayStyle(config), 
+  ...writingInputLines(config),
+  ...dayPage2(config),
+  })
+
 
   return (
     <>
       {/* First page: Header + Bible Verse + Gratitude */}
       <Page id={dayPageLink(date, config)} size={config.pageSize} dpi={config.dpi}>
-        <View style={styles.page}>
+        <View style={styles.dayStyle}>
           <Header
             isLeftHanded={config.isLeftHanded}
             title={date.format('MMMM')}
@@ -59,51 +66,64 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
           />
 
           {/* ====================== RANDOM BIBLE VERSE ====================== */}
-          <View style={styles.bibleStyle}>            {verseData ? (
-              <>
-                <Text style={styles.bibleText}>“{verseData.text}”</Text>
-                <Text style={styles.bibleRef}>— {verseData.reference}</Text>
-              </>
-            ) : (
-              <Text style={styles.bibleText}>Loading verse...</Text>
-            )}
-          </View>
+         <View style={styles.bibleStyle}>
+  {verseData ? (
+    <>
+      <Text style={styles.bibleText}>“{verseData.text}”</Text>
+      <Text style={styles.bibleRef}>— {verseData.reference}</Text>
+    </>
+  ) : (
+    <Text style={styles.bibleText}>Loading verse...</Text>
+  )}
+</View>
 
-          {/* Your gratitude section */}
-          <View style={styles.gratitudeSection}>
-            <Text style={styles.questionText}>What I'm grateful for:</Text>
-            <Text style={{ fontSize: 11, marginTop: 10, marginLeft: 10 }}>
-              generally? ____________________________________________
-            </Text>
-            <Text style={{ fontSize: 11, marginTop: 10, marginLeft: 10 }}>
-              who? ____________________________________________
-            </Text>
-            <Text style={{ fontSize: 11, marginTop: 10, marginLeft: 10 }}>
-              yesterday? ____________________________________________
-            </Text>
-          </View>
+{/* Your gratitude section */}
+<View>
+  <Text style={styles.label}>What I'm grateful for:</Text>
+  <Text style={{ height: 12 }}>{'\u00A0'}</Text>
 
-          {/* ====================== RANDOM quote  ====================== */}
-          <View style={styles.bibleSection}>
-            {quoteData ? (
-              <>
-                <Text style={styles.bibleText}>“{quoteData.text}”</Text>
-              </>
-            ) : (
-              <Text style={styles.bibleText}>Loading quote...</Text>
-            )}
-          </View>
+  <View style={styles.row}>
+    <Text style={styles.promptText}>generally?</Text>
+    <View style={styles.underlineContainer}>
+      <Text style={styles.writingText}>{'\u00A0'}</Text>
+      <View style={styles.underline} />
+    </View>
+  </View>
 
-          {/* ====================== personal quote  ====================== */}
-          <View style={styles.bibleSection}>
-            {personalQuoteData ? (
-              <>
-                <Text style={styles.bibleText}>“{personalQuoteData.text}”</Text>
-              </>
-            ) : (
-              <Text style={styles.bibleText}>Loading personal quote...</Text>
-            )}
-          </View>
+  <View style={styles.row}>
+    <Text style={styles.promptText}>who?</Text>
+    <View style={styles.underlineContainer}>
+      <Text style={styles.writingText}>{'\u00A0'}</Text>
+      <View style={styles.underline} />
+    </View>
+  </View>
+
+  <View style={styles.row}>
+    <Text style={styles.promptText}>yesterday?</Text>
+    <View style={styles.underlineContainer}>
+      <Text style={styles.writingText}>{'\u00A0'}</Text>
+      <View style={styles.underline} />
+    </View>
+  </View>
+</View>
+
+{/* RANDOM quote */}
+<View style={styles.quoteSection}>
+  {quoteData ? (
+    <Text style={styles.quoteStyle}>“{quoteData.text}”</Text>
+  ) : (
+    <Text style={styles.quoteStyle}>Loading quote...</Text>
+  )}
+</View>
+
+{/* personal quote */}
+<View style={styles.quoteSection}>
+  {personalQuoteData ? (
+    <Text style={styles.quoteStyle}>“{personalQuoteData.text}”</Text>
+  ) : (
+    <Text style={styles.quoteStyle}>Loading personal quote...</Text>
+  )}
+</View>
 
         </View>
 
@@ -131,7 +151,42 @@ const DayPage = ({ date, config, verseData, quoteData, personalQuoteData }) => {
             nextLink={'#' + nextDayPageLink(date, config)}
           />
           <View style={styles.content}>
-            <Itinerary items={itemsByPage[0]} />
+
+             <View style={styles.dayRow}>
+                {/* Left Column */}
+                <View style={styles.dayColumn1}>
+                   <View style={styles.dayRow}>
+                      <View style={styles.dayColumn50}>
+                     <Text>8-9am</Text> 
+                     <Text>9-10am</Text> 
+                     <Text>etc</Text> 
+                    </View>
+                    <View style={styles.dayColumn50}>
+                                           <Text>Plan</Text> 
+ 
+                    </View>
+                  </View>
+
+           <View style={styles.innerRow}>
+      <Text>Column 1 - Row 1 Content</Text>
+      <Text>Column 1 - Row 1 Content</Text>
+      <Text>Column 1 - Row 1 Content</Text>
+    </View>
+       <View style={styles.innerRow}>
+      <Text>Column 1 - Row 2 Content</Text>
+               <Itinerary items={itemsByPage[0]} />
+
+    </View>
+                   
+
+        </View>
+        
+        {/* Right Column */}
+        <View style={styles.dayColumn2}>
+          <Text>Content for the second column.</Text>
+        </View>
+      </View>
+          
           </View>
         </View>
       </Page>
