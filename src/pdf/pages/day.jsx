@@ -2,6 +2,21 @@ import { Text, Page, View, StyleSheet } from '@react-pdf/renderer';
 import dayjs from 'dayjs/esm';
 import PropTypes from 'prop-types';
 
+
+// AK TO DO ==============================================================
+
+// page 1 journal to 80% - DONE
+// page 2 journal to 80% - currently 40%
+//  make 4 quadrants
+//  make bottom section
+//  make right hand section
+//  make right hand section select from 3 sources
+// summaries etc to 80%
+
+
+// AK TO DO ==============================================================
+
+
 import {
   findByDate,
   DATE_FORMAT as SPECIAL_DATES_DATE_FORMAT,
@@ -157,9 +172,29 @@ const styles = StyleSheet.create({
                 <View style={styles.dayColumn1}>
                    <View style={styles.dayRow}>
                       <View style={styles.dayColumn50}>
-                     <Text>8-9am</Text> 
-                     <Text>9-10am</Text> 
-                     <Text>etc</Text> 
+                      <View style={styles.rowBottomBorder}>
+  <Text>Your text here</Text>
+</View>
+                         <Text>CBT Reframe</Text>
+                          <Text>Area:</Text>
+                          <Text>Thought:</Text>
+                          <Text>Feeling:</Text>
+
+
+                        
+                        
+                   <Text>09:00 - 10:00</Text>
+                    <Text>10:00 - 11:00</Text>
+                    <Text>11:00 - 12:00</Text>
+                    <Text>12:00 - 13:00</Text>
+                    <Text>13:00 - 14:00</Text>
+                    <Text>14:00 - 15:00</Text>
+                    <Text>15:00 - 16:00</Text>
+                    <Text>16:00 - 17:00</Text>
+                    <Text>17:00 - 18:00</Text>
+                    <Text>18:00 - 19:00</Text>
+                    <Text>19:00 - 20:00</Text>
+                    <Text>20:00 - 21:00</Text>
                     </View>
                     <View style={styles.dayColumn50}>
                                            <Text>Plan</Text> 
@@ -168,9 +203,8 @@ const styles = StyleSheet.create({
                   </View>
 
            <View style={styles.innerRow}>
-      <Text>Column 1 - Row 1 Content</Text>
-      <Text>Column 1 - Row 1 Content</Text>
-      <Text>Column 1 - Row 1 Content</Text>
+             <Text>Column 1 - Row 1 Content</Text>
+     
     </View>
        <View style={styles.innerRow}>
       <Text>Column 1 - Row 2 Content</Text>

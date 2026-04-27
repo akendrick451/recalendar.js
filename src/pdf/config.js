@@ -94,7 +94,7 @@ class PdfConfig {
 		this.dayItineraries = [ ...Array( 7 ).keys() ].map( () => {
 			const itinerary = {
 				dayOfWeek,
-				items: [ { type: ITINERARY_LINES, value: 10 } ],
+				items: [ { type: ITINERARY_LINES, value: 5 } ],
 				isEnabled: true,
 			};
 			dayOfWeek = ++dayOfWeek % 7;

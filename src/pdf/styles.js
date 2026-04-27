@@ -35,24 +35,32 @@ export function dayPage2() {
  return{
 			dayRow: {
 			flexDirection: 'row',
+      fontSize:10,
 		},
 		// Individual columns
 		dayColumn50: {
 		width: '50%',
 			padding: 10,
+      border: '1px solid red',
 		},
 		dayColumn1: {
 		width: '66%',
 			padding: 10,
+            border: '1px solid blue',
+
 		},
 			dayColumn2: {
 			width: '33%',
 			padding: 10,
+            border: '1px dashed green',
+
 		},
 		// The inner rows for Column 1
     innerRow: {
       flex: 1, // Optional: makes rows share the height equally
       marginBottom: 10, // Space between the two rows
+            border: '1px dashed blue',
+
     },
 	};
 }
