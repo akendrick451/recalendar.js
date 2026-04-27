@@ -40,8 +40,23 @@ const variousQuotes = [
 // Personal quotes, affirmations and information
 const personalQuotes = [
   { text: "You got this" },
-  { text: "something is very good" },
   { text: "May you find what you are looking for" },
+  { text: "All of your feelings are okay with me." },
+{ text: "I am always glad to see you." },
+{ text: "I am so glad you were born." },
+{ text: "I am very proud of you." },
+{ text: "I love who you are and am doing my best to always be on your side." },
+{ text: "It is okay for you to be angry and I won’t let you hurt yourself or others when you are." },
+{ text: "You are a delight to my eyes." },
+{ text: "You are a good person." },
+{ text: "You can choose your own values." },
+{ text: "You can come to me whenever you’re feeling hurt or bad." },
+{ text: "You can have your own preferences and tastes." },
+{ text: "You can know what you need and ask for help." },
+{ text: "You can make mistakes - they are your teachers." },
+{ text: "You can pick your own friends, and you don’t have to like everyone." },
+{ text: "You can sometimes feel confused and ambivalent, and not know all the answers." },
+{ text: "You do not have to be perfect to get my love and protection." },
  
 ];
 
