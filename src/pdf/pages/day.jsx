@@ -122,6 +122,15 @@ const styles = StyleSheet.create({
   </View>
 </View>
 
+  <View style={styles.row}>
+      <Text style={styles.promptText}>What is God teaching me?</Text>
+       <View style={styles.underlineContainer}>
+          <Text style={styles.writingText}>{'\u00A0'}</Text>
+          <View style={styles.underline} />
+      </View>
+  </View>
+  
+
 {/* RANDOM quote */}
 <View style={styles.quoteSection}>
   {quoteData ? (
@@ -153,49 +162,76 @@ const styles = StyleSheet.create({
         </Page>
       ))}
 
-      {/* Second page: Day Plan */}
+      {/* ======================================================== Second page: Day Plan  ====================================================== */}
+      {/* ======================================================== Second page: Day Plan  ====================================================== */}
+
       <Page id={dayPageLink(date, config)} size={config.pageSize} dpi={config.dpi}>
         <View style={styles.page}>
-          <Header
-            isLeftHanded={config.isLeftHanded}
-            title={'Day Plan - ' + date.format('MMMM')}
-            titleLink={'#' + monthOverviewLink(date, config)}
-            subtitle={date.format('dddd')}
-            number={date.format('DD')}
-            previousLink={'#' + previousDayPageLink(date, config)}
-            nextLink={'#' + nextDayPageLink(date, config)}
-          />
+         
           <View style={styles.content}>
-
+            <Text>Day Plan: {date.format('dddd')}  {date.format('DD MMM YYYY')}</Text>
+           
              <View style={styles.dayRow}>
-                {/* Left Column */}
+                {/* ======================================= Left two thirds for main section ================================================ */}
                 <View style={styles.dayColumn1}>
+
+                   {/* ======================================= first row for CBT, day times and plan ================================================ */}
                    <View style={styles.dayRow}>
                       <View style={styles.dayColumn50}>
-                      <View style={styles.rowBottomBorder}>
-  <Text>Your text here</Text>
-</View>
+                   
                          <Text>CBT Reframe</Text>
-                          <Text>Area:</Text>
-                          <Text>Thought:</Text>
-                          <Text>Feeling:</Text>
+                          <View style={styles.row}>
+                            <View style={styles.underlineContainer}>
+                              <View style={styles.underline} />      
+                                <Text>Area:</Text>
+                            </View>
+                          </View>
+                       <View style={styles.row}>
+                            <View style={styles.underlineContainer}>
+                              <View style={styles.underline} />      
+                                <Text>Thought:</Text>
+                            </View>
+                          </View>
+                            <View style={styles.row}>
+                            <View style={styles.underlineContainer}>
+                              <View style={styles.underline} />      
+                                <Text>Therefore feel:</Text>
+                            </View>
+                          </View>
+                          <View style={styles.row}>
+                            <View style={styles.underlineContainer}>
+                              <View style={styles.underline} />      
+                                <Text>New thought:</Text>
+                            </View>
+                          </View>
+                            <View style={styles.row}>
+                            <View style={styles.underlineContainer}>
+                              <View style={styles.underline} />      
+                                <Text>Therefore new feeling:</Text>
+                            </View>
+                          </View>
 
 
-                        
-                        
-                   <Text>09:00 - 10:00</Text>
-                    <Text>10:00 - 11:00</Text>
-                    <Text>11:00 - 12:00</Text>
-                    <Text>12:00 - 13:00</Text>
-                    <Text>13:00 - 14:00</Text>
-                    <Text>14:00 - 15:00</Text>
-                    <Text>15:00 - 16:00</Text>
-                    <Text>16:00 - 17:00</Text>
-                    <Text>17:00 - 18:00</Text>
-                    <Text>18:00 - 19:00</Text>
-                    <Text>19:00 - 20:00</Text>
-                    <Text>20:00 - 21:00</Text>
-                    </View>
+
+                              
+
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>06-07</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>07-08</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>08-09</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>09-10</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>10-11</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>11-12</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>12-13</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>13-14</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>14-15</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>15-16</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>16-17</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>17-18</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>18-19</Text></View></View>
+                  <View style={styles.row}><View style={styles.underlineContainer}><View style={styles.underline} /><Text>19-20</Text></View></View>
+                
+                   
+                    </View> {/* close one day column 50 , the left hand side or left hand 1/3rd*/ }
                     <View style={styles.dayColumn50}>
                                            <Text>Plan</Text> 
  
@@ -215,7 +251,7 @@ const styles = StyleSheet.create({
 
         </View>
         
-        {/* Right Column */}
+        {/* ======================================= Right side for montly notes, current reading, bucket list ======================================= */}
         <View style={styles.dayColumn2}>
           <Text>Content for the second column.</Text>
         </View>

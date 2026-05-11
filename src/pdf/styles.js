@@ -25,7 +25,7 @@ export function gratitudeStyle() {
     },
     writingLine: {
       height: '1px',
-      backgroundColor: '#8ff75f',
+      backgroundColor: '#0d0f0c',
       margin: '10px 5px',
     },
   };
@@ -35,7 +35,7 @@ export function dayPage2() {
  return{
 			dayRow: {
 			flexDirection: 'row',
-      fontSize:10,
+      fontSize:8,
 		},
 		// Individual columns
 		dayColumn50: {
@@ -117,7 +117,7 @@ export function writingInputLines() {
 	row: {
 	flexDirection: 'row',
 	alignItems: 'flex-end',
-	marginBottom: 12,           // space between each row
+	marginBottom: 2,           // space between each row - was 12 atk May 10 2026
 	},
 
 	promptText: {
@@ -131,6 +131,7 @@ export function writingInputLines() {
 	underlineContainer: {
 	flex: 1,
 	position: 'relative',
+  paddingBottom:2,
 	},
 
 	underline: {
@@ -139,12 +140,12 @@ export function writingInputLines() {
 	left: 0,
 	right: 0,
 	height: 1,
-	backgroundColor: '#8ff75f',
+	backgroundColor: '#494b48f3',
 	},
 
 	writingText: {
-	fontSize: 11,
-	paddingBottom: 2,
+	fontSize: 12,
+	paddingBottom: 1,
 	},
 };
 }
